@@ -86,7 +86,9 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "prettier/prettier": "off"
+    }
   },
   "lint-staged": {
     "*.{js,ts,vue,jsx.tsx}": "npm run lint"
