@@ -11,6 +11,10 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 const DEFAULT_USER_AGENT = ""; // Empty string to use the Electron default
 let mainWindow = null;
 
+// Disable QUIC
+// Prevent Cloudflare from detecting the real IP when using a proxy that bypasses UDP traffic
+app.commandLine.appendSwitch("disable-quic");
+
 const userDataPath = app.getPath("userData");
 const proxySettingPath = path.join(userDataPath, "proxySetting.json");
 const defaultProxySetting = {
@@ -259,6 +263,13 @@ function createNewWindow(url, userAgent = "") {
           `localStorage.getItem("${key}");`,
         );
       };
+
+      const getCookie = async (key) => {
+        return await newWin.webContents.executeJavaScript(
+          `document.cookie.split("; ").find((cookie) => cookie.startsWith("${key}="))?.split("=")[1];`,
+        );
+      };
+
       if (url.startsWith("https://moss.fastnlp.top/")) {
         // Get the secret of MOSS
         const secret = await getLocalStorage("flutter.token");
@@ -285,6 +296,9 @@ function createNewWindow(url, userAgent = "") {
           "window.ereNdsRqhp2Rd3LEW();",
         );
         mainWindow.webContents.send("POE-FORMKEY", formkey);
+      } else if (url.startsWith("https://chatglm.cn/")) {
+        const token = await getCookie("chatglm_token");
+        mainWindow.webContents.send("CHATGLM-TOKENS", { token });
       }
     } catch (err) {
       console.error(err);
