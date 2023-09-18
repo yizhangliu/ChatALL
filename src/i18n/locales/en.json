@@ -85,6 +85,9 @@
   "360AiBrain": {
     "name": "360 AI Brain"
   },
+  "baichuan": {
+    "name": "BaiChuan"
+  },
   "azureOpenaiApi": {
     "name": "Azure OpenAI Service",
     "temperature": "Temperature",

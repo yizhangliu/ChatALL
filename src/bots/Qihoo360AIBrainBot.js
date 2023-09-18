@@ -47,6 +47,7 @@ export default class Qihoo360AIBrainBot extends Bot {
       "content-type": "application/json",
     };
     const payload = JSON.stringify({
+      // conversation_id: "",
       is_regenerate: false,
       is_so: false,
       prompt: prompt,

@@ -42,6 +42,7 @@ import Llama213bBot from "./lmsys/Llama213bBot";
 import Llama27bBot from "./lmsys/Llama27bBot";
 import Llama270bBot from "./lmsys/Llama270bBot";
 import Falcon180bBot from "./huggingface/Falcon180bBot";
+import BaiChuanBot from "./BaiChuanBot.js";
 
 const all = [
   Qihoo360AIBrainBot.getInstance(),
@@ -86,6 +87,7 @@ const all = [
   SparkBot.getInstance(),
   VicunaBot.getInstance(),
   YouChatBot.getInstance(),
+  BaiChuanBot.getInstance(),
 ];
 
 const disabled = ["ClaudeBot", "ChatGPTBrowsingBot", "ChatGLMBot", "AlpacaBot"];
@@ -137,6 +139,7 @@ export const botTags = {
     bots.getBotByClassName("PiBot"),
     bots.getBotByClassName("SageBot"),
     bots.getBotByClassName("Falcon180bBot"),
+    bots.getBotByClassName("BaiChuanBot"),
   ],
   paid: [
     bots.getBotByClassName("ChatGPT4Bot"),
@@ -176,6 +179,7 @@ export const botTags = {
     bots.getBotByClassName("WenxinQianfanBot"),
     bots.getBotByClassName("WenxinQianfanTurboBot"),
     bots.getBotByClassName("MOSSBot"),
+    bots.getBotByClassName("BaiChuanBot"),
   ],
 };
 export default bots;

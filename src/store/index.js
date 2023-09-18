@@ -61,6 +61,9 @@ export default createStore({
     qianWen: {
       xsrfToken: "",
     },
+    baiChuan: {
+      xsrfToken: "",
+    },
     skyWork: {
       inviteToken: "",
       token: "",
@@ -177,6 +180,9 @@ export default createStore({
     },
     setQianWenToken(state, token) {
       state.qianWen.xsrfToken = token;
+    },
+    setBaiChuanToken(state, token) {
+      state.baiChuan.xsrfToken = token;
     },
     setSkyWork(state, tokens) {
       state.skyWork = { ...state.skyWork, ...tokens };
